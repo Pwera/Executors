@@ -17,5 +17,5 @@ add_test(test1 foo)
 
 
 add_executable(threat_per_task_executor_test test/thread_per_task_executor_test.cpp)
-target_link_libraries(threat_per_task_executor_test ${GTEST_BOTH_LIBRARIES} futureexecutors ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(threat_per_task_executor_test gtest gtest_main futureexecutors ${CMAKE_THREAD_LIBS_INIT})
 add_test(threat_per_task_executor_test threat_per_task_executor_test)
