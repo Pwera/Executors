@@ -10,6 +10,8 @@ compiler:
 script:
     - sudo apt-get install libgtest-dev
     - cmake --version
+    - zypper update cmake
+    - cmake --version
     - gcc --version
     - ls
     - mkdir build
