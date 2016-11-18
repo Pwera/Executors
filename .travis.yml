@@ -12,6 +12,7 @@ addons: &addons
       - g++-4.9
       - clang-format-3.7
       - python-pip
+      - libgtest-dev
     sources: &sources
       - ubuntu-toolchain-r-test
       - llvm-toolchain-precise-3.5
@@ -110,7 +111,7 @@ install:
   - if [ "$GENERATE_COVERAGE" == "ON" ]; then pip install --user git+git://github.com/eddyxu/cpp-coveralls.git; fi
 
 before_script:
-  - sudo apt-get install libgtest-dev -y
+  - apt-get install libgtest-dev -y
   - export CXX=$COMPILER CC=$CCOMPILER
   - if [ "$BREW_CMAKE" == "ON" ]; then brew update && brew install cmake; fi
   - cmake --version
@@ -120,7 +121,7 @@ before_script:
 
 script:
   - make -j2
-  - ctest -V
+  - ctest
 
 after_success:
   - if [ "$GENERATE_COVERAGE" == "ON" ]; then coveralls -i 'cpr' -i 'include' -e '../include/cpr.h' --root '../' --verbose --gcov-options '\-lp' --gcov 'gcov-4.9'; fi
