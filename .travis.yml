@@ -12,6 +12,9 @@ script:
     - cmake --version
     - pkg-config --list-all
     - gcc --version
+    - apt-get update
+    - apt-get upgrade gcc
+    - gcc --version
     - ls
     - cat CMakeLists.txt
     - mkdir build
