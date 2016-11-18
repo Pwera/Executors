@@ -16,7 +16,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-4.9
-            - cmake
       env: COMPILER=g++-4.9
     - compiler: gcc
       addons:
@@ -25,7 +24,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
-            - cmake
       env: COMPILER=g++-5
     - compiler: clang
       addons:
@@ -35,7 +33,6 @@ matrix:
             - llvm-toolchain-precise-3.6
           packages:
             - clang-3.6
-            - cmake
       env: COMPILER=clang++-3.6
     - compiler: clang
       addons:
@@ -45,13 +42,13 @@ matrix:
             - llvm-toolchain-precise-3.7
           packages:
             - clang-3.7
-            - cmake
       env: COMPILER=clang++-3.7
 
 before_install:
-  - sudo sudo apt-get install build-essential
-  - sudo apt-get update -qq
+  - sudo sudo apt-get install build-essential -y
+  - sudo apt-get update -qq -y
   - sudo apt-get install -y libgtest-dev
+  - sudo apt-get install cmake -y
 
 script:
     - cmake --version
