@@ -110,6 +110,7 @@ install:
   - if [ "$GENERATE_COVERAGE" == "ON" ]; then pip install --user git+git://github.com/eddyxu/cpp-coveralls.git; fi
 
 before_script:
+ - sudo apt-get install -y libgtest-dev
   - export CXX=$COMPILER CC=$CCOMPILER
   - if [ "$BREW_CMAKE" == "ON" ]; then brew update && brew install cmake; fi
   - cmake --version
