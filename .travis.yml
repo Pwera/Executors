@@ -1,6 +1,6 @@
 language: cpp
 
-sudo: false
+sudo: true
 cache: ccache
 
 compiler: clang
@@ -42,7 +42,9 @@ matrix:
     - env: COMPILER=g++-4.7 CCOMPILER=gcc-4.7
       addons:
         apt:
-          packages: g++-4.7
+          packages:
+          - g++-4.7
+          - libgtest-dev
           sources: *sources
 
     # gcc 4.8
@@ -56,7 +58,9 @@ matrix:
     - env: COMPILER=g++-5 CCOMPILER=gcc-5
       addons:
         apt:
-          packages: g++-5
+          packages:
+          - g++-5
+          - libgtest-dev
           sources: *sources
 
     # Clang 3.4
