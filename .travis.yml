@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+language:
+    - cpp
+
+compiler:
+    - gcc
+
+script:
+    - sudo apt-get install libgtest-dev
+    - cmake --version
+    - gcc --version
+    - ls
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+- ctest
