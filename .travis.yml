@@ -49,11 +49,13 @@ matrix:
       env: COMPILER=clang++-3.7
 
 before_install:
+  - sudo sudo apt-get install build-essential
   - sudo apt-get update -qq
-  - sudo apt-get install -y libopencv-dev
+  - sudo apt-get upgrade cmake
+  - sudo apt-get update cmake
+  - sudo apt-get install -y libgtest-dev
 
 script:
-    - sudo apt-get install libgtest-dev
     - cmake --version
     - pkg-config --list-all
     - gcc --version
