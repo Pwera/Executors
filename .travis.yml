@@ -13,6 +13,7 @@ script:
     - pkg-config --list-all
     - gcc --version
     - ls
+    - cat CMakeLists.txt
     - mkdir build
     - cd build
     - cmake ..
