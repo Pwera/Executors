@@ -45,12 +45,12 @@ matrix:
       env: COMPILER=clang++-3.7
 
 before_install:
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo sudo apt-get install build-essential -y
   - sudo apt-get update -qq -y
   - sudo apt-get install -y libgtest-dev
   - sudo apt-get install gcc-5 g++-5 -y
-  -  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+  -  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5 -y
 
 script:
     - cmake --version
