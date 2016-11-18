@@ -10,12 +10,10 @@ compiler:
 script:
     - sudo apt-get install libgtest-dev
     - cmake --version
-    - apt-get upgrade cmake
-    - cmake --version
+    - pkg-config --list-all
     - gcc --version
     - ls
     - mkdir build
     - cd build
     - cmake ..
     - make
-    - ctest
