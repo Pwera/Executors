@@ -24,6 +24,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
+            - gcc-5
       env: COMPILER=g++-5
     - compiler: clang
       addons:
@@ -50,6 +51,8 @@ before_install:
   - sudo apt-get update -qq -y
   - sudo apt-get install -y libgtest-dev
   - sudo apt-get install gcc-5 g++-5 -y
+  - gcc -v
+  - sudo apt-get remove gcc -y
   - gcc -v
 
 script:
