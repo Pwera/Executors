@@ -117,7 +117,7 @@ install:
 before_script:
   - export CXX=$COMPILER CC=$CCOMPILER
   - cmake --version
-  - sudo apt-get update
+  - sudo apt-get upgrade cmake
   - cmake --version
   - mkdir build
   - cd build
