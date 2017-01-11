@@ -125,6 +125,7 @@ before_script:
   - make
   - sudo apt-get remove cmake
   - sudo make install
+  - cp cmake /usr/bin
   - cmake --version
   - cd ..
   - ls 
