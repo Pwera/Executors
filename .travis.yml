@@ -126,8 +126,12 @@ before_script:
   - sudo apt-get remove cmake
   - sudo make install
   - ls
+  - cd bin
+  - ls
   - sudo cp cmake /usr/bin
   - cmake --version
+  - cd ..
+  - ls 
   - cd ..
   - ls 
   - mkdir build
