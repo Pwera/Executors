@@ -9,13 +9,13 @@ add_library(futureexecutors SHARED ${SOURCE_FILES})
 
 enable_testing()
 add_executable(foo test/thread_pool_executor_test.cpp)
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+#find_package(GTest REQUIRED)
+#include_directories(${GTEST_INCLUDE_DIRS})
 find_package(Threads REQUIRED)
-target_link_libraries(foo ${GTEST_BOTH_LIBRARIES} futureexecutors ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(foo gtest gtest_main futureexecutors ${CMAKE_THREAD_LIBS_INIT})
 add_test(test1 foo)
 
 
 add_executable(threat_per_task_executor_test test/thread_per_task_executor_test.cpp)
-target_link_libraries(threat_per_task_executor_test ${GTEST_BOTH_LIBRARIES} futureexecutors ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(threat_per_task_executor_test gtest gtest_main futureexecutors ${CMAKE_THREAD_LIBS_INIT})
 add_test(threat_per_task_executor_test threat_per_task_executor_test)
