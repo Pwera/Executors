@@ -116,7 +116,8 @@ install:
 
 before_script:
   - export CXX=$COMPILER CC=$CCOMPILER
-  - if [ "$BREW_CMAKE" == "ON" ]; then brew update && brew install cmake; fi
+  - cmake --version
+  - brew update && brew install cmake
   - cmake --version
   - mkdir build
   - cd build
