@@ -123,7 +123,10 @@ before_script:
   - cd cmake-3.2.2
   - ./configure
   - make
+  - sudo make install
   - cmake --version
+  - cd ..
+  - ls 
   - mkdir build
   - cd build
   - cmake ..
