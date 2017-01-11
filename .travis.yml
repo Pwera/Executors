@@ -123,6 +123,7 @@ before_script:
   - cd cmake-3.2.2
   - ./configure
   - make
+  - sudo apt-get remove cmake
   - sudo make install
   - cmake --version
   - cd ..
