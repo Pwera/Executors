@@ -71,7 +71,8 @@ matrix:
       env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
       osx_image: xcode7
   allow_failures:
-    - env: COMPILER=clang++ CCOMPILER=clang LINUX_CLANG=1
+    - env: COMPILER=clang++ CCOMPILER=clang
+    - env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
 
 install:
   - if [ "$GENERATE_COVERAGE" == "ON" ]; then pip install --user git+git://github.com/eddyxu/cpp-coveralls.git; fi
