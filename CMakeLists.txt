@@ -1,21 +1,26 @@
 cmake_minimum_required(VERSION 2.8)
-project(futureexecutors)
+project(Executors)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
-set(SOURCE_FILES main.cpp src/executor.h src/executor_helper.h src/limited_thread_per_task_executor.h src/local_queue_thread_pool_executor.h src/loop_executor.h src/randomized_thread_pool_executor.h src/serial_executor.h src/system_executor.h src/thread_per_task_executor.h src/thread_per_task_executor_test.h)
+set(LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/cmake-build-debug" CACHE PATH "")
+set(BINARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/cmake-build-debug" CACHE PATH "")
 
-add_library(futureexecutors SHARED ${SOURCE_FILES})
+set(CMAKE_CXX_STANDARD 14)
 
+add_subdirectory(src)
+add_subdirectory(extern/googletest)
 
-enable_testing()
-add_executable(foo test/thread_pool_executor_test.cpp)
-#find_package(GTest REQUIRED)
-#include_directories(${GTEST_INCLUDE_DIRS})
-find_package(Threads REQUIRED)
-target_link_libraries(foo gtest gtest_main futureexecutors ${CMAKE_THREAD_LIBS_INIT})
-add_test(test1 foo)
+include_directories(${gtest_SOURCE_DIR}/include ${EXECUTOR_INCLUDE_DIR})
 
 
-add_executable(threat_per_task_executor_test test/thread_per_task_executor_test.cpp)
-target_link_libraries(threat_per_task_executor_test gtest gtest_main futureexecutors ${CMAKE_THREAD_LIBS_INIT})
-add_test(threat_per_task_executor_test threat_per_task_executor_test)
+macro(add_executor_test _TEST_NAME)
+    add_executable(${_TEST_NAME}_tests
+            test/${_TEST_NAME}_test.cpp)
+    target_link_libraries(${_TEST_NAME}_tests
+            gtest_main ${EXECUTOR_LIB} ${CMAKE_THREAD_LIBS_INIT})
+    add_test(NAME ${_TEST_NAME}_tests COMMAND ${_TEST_NAME}_tests)
+    set_property(TARGET ${_TEST_NAME}_tests PROPERTY FOLDER "tests")
+endmacro()
+
+add_executor_test(thread_per_task_executor)
+add_executor_test(thread_pool_executor)
+
