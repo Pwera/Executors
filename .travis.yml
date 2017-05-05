@@ -31,29 +31,6 @@ env:
 
 matrix:
   include:
-    # gcc 4.6
-    - env: COMPILER=g++-4.6 CCOMPILER=gcc-4.6
-      addons:
-        apt:
-          packages: g++-4.6
-          sources: *sources
-
-    # gcc 4.7
-    - env: COMPILER=g++-4.7 CCOMPILER=gcc-4.7
-      addons:
-        apt:
-          packages:
-          - g++-4.7
-          - libgtest-dev
-          sources: *sources
-
-    # gcc 4.8
-    - env: COMPILER=g++-4.8 CCOMPILER=gcc-4.8
-      addons:
-        apt:
-          packages: g++-4.8
-          sources: *sources
-
     # gcc 5
     - env: COMPILER=g++-5 CCOMPILER=gcc-5
       addons:
@@ -63,25 +40,11 @@ matrix:
           - libgtest-dev
           sources: *sources
 
-    # Clang 3.4
-    - env: COMPILER=clang++ CCOMPILER=clang LINUX_CLANG=1
-      addons:
-        apt:
-          packages: clang-3.4
-          sources: *sources
-
     # Clang 3.5
     - env: COMPILER=clang++-3.5 CCOMPILER=clang-3.5
       addons:
         apt:
           packages: clang-3.5
-          sources: *sources
-
-    # Clang 3.6
-    - env: COMPILER=clang++-3.6 CCOMPILER=clang-3.6
-      addons:
-        apt:
-          packages: clang-3.6
           sources: *sources
 
     # Clang 3.7
@@ -108,7 +71,6 @@ matrix:
       env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
       osx_image: xcode7
   allow_failures:
-    - env: COMPILER=g++-4.6 CCOMPILER=gcc-4.6
     - env: COMPILER=clang++ CCOMPILER=clang LINUX_CLANG=1
 
 install:
@@ -141,11 +103,10 @@ before_script:
 
 script:
   - make -j2
-  - ctest
 
-after_success:
-  - if [ "$GENERATE_COVERAGE" == "ON" ]; then coveralls -i 'cpr' -i 'include' -e '../include/cpr.h' --root '../' --verbose --gcov-options '\-lp' --gcov 'gcov-4.9'; fi
+#after_success:
+#  - if [ "$GENERATE_COVERAGE" == "ON" ]; then coveralls -i 'cpr' -i 'include' -e '../include/cpr.h' --root '../' --verbose --gcov-options '\-lp' --gcov 'gcov-4.9'; fi
 
-after_script:
-  - if [ "$FORMAT_CHECK" == "ON" ]; then cd .. && ./format-check.sh; fi
+#after_script:
+#  - if [ "$FORMAT_CHECK" == "ON" ]; then cd .. && ./format-check.sh; fi
 
