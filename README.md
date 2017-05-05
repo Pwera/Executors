@@ -1,4 +1,8 @@
 # Executors
+
+<img src="https://travis-ci.org/Pwera/Executors.svg?branch=master" />
+<br>
+
 <img src="https://github.com/Pwera/Executors/blob/master/img/logo.png" alt="Logotype"/>
 
 # loop_executor
