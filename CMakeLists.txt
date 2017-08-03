@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(Executors)
 
-set(LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/cmake-build-debug" CACHE PATH "")
-set(BINARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/cmake-build-debug" CACHE PATH "")
+set(BINARY_OUTPUT_DIRECTORY "${OUTPUT_DIR}" CACHE PATH "")
+set(CMAKE_INSTALL_PREFIX "${OUTPUT_DIR}" CACHE PATH "") 
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -11,7 +11,6 @@ add_subdirectory(extern/googletest)
 
 include_directories(${gtest_SOURCE_DIR}/include ${EXECUTOR_INCLUDE_DIR})
 
-# TODO: Move macro to other file...
 macro(add_executor_test _TEST_NAME)
     add_executable(${_TEST_NAME}_tests
             test/${_TEST_NAME}_test.cpp)

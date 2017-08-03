@@ -1,0 +1,45 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.executors</groupId>
+    <artifactId>Executors</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>${project.artifactId}</name>
+    
+    <properties>
+        <rootdir>css-ia</rootdir>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="target"/>
+                                <exec executable="cmake" dir="target" failonerror="true">
+                                    <arg line="-DOUTPUT_DIR=${project.build.directory} -G'MinGW Makefiles' .." />
+                                </exec>
+                                <exec executable="make" dir="target" failonerror="true">
+                                    <arg line="-f Makefile"/>
+                                </exec>
+                                <exec executable="make" dir="target" failonerror="true">
+                                    <arg line=" install"/>
+                                </exec>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
