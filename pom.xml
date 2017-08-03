@@ -8,7 +8,7 @@
     <name>${project.artifactId}</name>
     
     <properties>
-        <rootdir>css-ia</rootdir>
+        <projectName>Executors</projectName>
     </properties>
     
     <build>
@@ -31,6 +31,9 @@
                                 </exec>
                                 <exec executable="make" dir="target" failonerror="true">
                                     <arg line="-f Makefile"/>
+                                </exec>
+                                <exec executable="make" dir="target" failonerror="true">
+                                    <arg line=" test"/>
                                 </exec>
                                 <exec executable="make" dir="target" failonerror="true">
                                     <arg line=" install"/>

@@ -10,7 +10,7 @@ add_subdirectory(src)
 add_subdirectory(extern/googletest)
 
 include_directories(${gtest_SOURCE_DIR}/include ${EXECUTOR_INCLUDE_DIR})
-
+enable_testing()
 macro(add_executor_test _TEST_NAME)
     add_executable(${_TEST_NAME}_tests
             test/${_TEST_NAME}_test.cpp)
