@@ -1,5 +1,7 @@
 # Executors
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/95d6c0bcae454844888aca2e6bedba08)](https://app.codacy.com/app/Pwera/Executors?utm_source=github.com&utm_medium=referral&utm_content=Pwera/Executors&utm_campaign=Badge_Grade_Dashboard)
+
 <img src="https://travis-ci.org/Pwera/Executors.svg?branch=master" />
 <br>
 
